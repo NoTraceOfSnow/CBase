@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CPlusBase.h"
+#include "CPlusBase1.h"
 
 using namespace std;
 
@@ -273,6 +274,10 @@ int main() {
     //------------------- c++ -------------------
     auto plus = new CPlusBase();
     delete (plus);
+
+    testCPlus1();
+
+    testCPlus2();
     return 0;
 }
 

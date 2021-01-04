@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(CBase
         CBase.cpp
-        CPlusBase.cpp)
+        CPlusBase.cpp CPlusBase1.cpp CPlusBase1.h)
