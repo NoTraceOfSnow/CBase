@@ -6,6 +6,8 @@
 #include "FrendTest.h"
 #include "CompareTest.h"
 #include "Box.h"
+#include "NewOperator.h"
+#include "TemplateTest.h"
 
 using namespace std;
 
@@ -324,9 +326,31 @@ int main() {
     cout << "编译时多态表现为：通过模板 template <class T>，编译器编译的时候，会生成对应类的方法。称为编译时多态,类似于java中的泛型 " << endl;
     testCompare();
     cout << "-------多态-------------" << endl;
-    cout << "-------运算符重载------------" << endl;
+    cout << "-------运算符重载 学习网址： https://www.runoob.com/cplusplus/cpp-overloading.html------------" << endl;
     boxText();
+    cout << "运算符重载  优化性能" << endl;
+    testNewOperator();
+    cout << "可重载运算符------" << endl;
+    cout << "双目算术运算符   " << "+ (加)，-(减)，*(乘)，/(除)，% (取模)" << endl;
+    cout << "关系运算符   " << "==(等于)，!= (不等于)，< (小于)，> (大于>，<=(小于等于)，>=(大于等于)" << endl;
+    cout << "逻辑运算符   " << "||(逻辑或)，&&(逻辑与)，!(逻辑非)" << endl;
+    cout << "单目运算符   " << "+ (正)，-(负)，*(指针)，&(取地址)" << endl;
+    cout << "自增自减运算符   " << "++(自增)，--(自减)" << endl;
+    cout << "位运算符   " << "| (按位或)，& (按位与)，~(按位取反)，^(按位异或),，<< (左移)，>>(右移)" << endl;
+    cout << "赋值运算符   " << "=, +=, -=, *=, /= , % = , &=, |=, ^=, <<=, >>=" << endl;
+    cout << "空间申请与释放   " << "new, delete, new[ ] , delete[]" << endl;
+    cout << "其他运算符   " << "()(函数调用)，->(成员访问)，,(逗号)，[](下标)" << endl;
+    cout << "不可重载运算符------" << endl;
+    cout << "成员访问运算符   " << "." << endl;
+    cout << "成员指针访问运算符   " << ".*, ->*" << endl;
+    cout << "域运算符   " << "::" << endl;
+    cout << "条件运算符   " << "?:" << endl;
+    cout << "预处理符号   " << "#" << endl;
     cout << "-------运算符重载------------" << endl;
+
+    testVirtual();
+
+    testTemplate();
     return 0;
 }
 

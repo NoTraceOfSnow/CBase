@@ -11,7 +11,6 @@ add_executable(CBase
         CPlusBase1.cpp
         ArrayList.cpp
         Instance.cpp
-        StructAndClass.cpp
         FrendTest.cpp
         FirendTest2.cpp
-        Box.h)
+        Box.h NewOperator.h TemplateTest.h BaseHeader.h)
