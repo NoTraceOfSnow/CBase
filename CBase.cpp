@@ -4,6 +4,8 @@
 #include "ArrayList.h"
 #include "StructAndClass.h"
 #include "FrendTest.h"
+#include "CompareTest.h"
+#include "Box.h"
 
 using namespace std;
 
@@ -311,9 +313,20 @@ int main() {
     cout << "当没有任何参数的时候，大小均为1，当有参数的时候，不管什么修饰符下，大小为最大参数的整数倍,类似于StructAndClass1" << endl;
     cout << "并且class当拥有virtual修饰的虚函数或者纯虚函数是，大小8" << endl;
     cout << "------------------" << endl;
-
+    cout << "-------友元模块测试------" << endl;
     FrendTest friendTest;
     friendTest.test();
+    cout << "-------友元模块测试------" << endl;
+
+    cout << "-------多态-------------" << endl;
+    cout << "多态分为：运行时多态，编译时多态" << endl;
+    cout << "运行时多态表现为：父类采用virtual修饰某个函数，子类必须实现。当调用的时候才知道实现的功能，称为运行时多态" << endl;
+    cout << "编译时多态表现为：通过模板 template <class T>，编译器编译的时候，会生成对应类的方法。称为编译时多态,类似于java中的泛型 " << endl;
+    testCompare();
+    cout << "-------多态-------------" << endl;
+    cout << "-------运算符重载------------" << endl;
+    boxText();
+    cout << "-------运算符重载------------" << endl;
     return 0;
 }
 

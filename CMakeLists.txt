@@ -13,4 +13,5 @@ add_executable(CBase
         Instance.cpp
         StructAndClass.cpp
         FrendTest.cpp
-        FirendTest2.cpp)
+        FirendTest2.cpp
+        Box.h)
