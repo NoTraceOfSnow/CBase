@@ -1,6 +1,9 @@
 #include <iostream>
 #include "CPlusBase.h"
 #include "CPlusBase1.h"
+#include "ArrayList.h"
+#include "StructAndClass.h"
+#include "FrendTest.h"
 
 using namespace std;
 
@@ -50,16 +53,20 @@ int main() {
      */
 //    *nuInitP = 8;
     /**
-     * 数组指针
-     * int (*p)[5];
+     * 数组指针,大小为8
+     * int (*parr1)[5];
      * int 表示数组指向的是int值，对p[0]取值返回int
-     * 指针数组
-     * int *p[5];
+     * 指针数组，大小为步长，即40
+     * int *parr2[5];
      * int 表示指针数组中的指针返回值是int，对p[0]取值返回值是指针，对返回值指针取值返回值是int
      */
     /**
      * 二维数组
      */
+    int (*parr1)[5];
+    cout << "数组指针大小 ： " << sizeof(parr1) << endl;
+    int *parr2[5];
+    cout << "指针数组大小 ： " << sizeof(parr2) << endl;
     char a[2][3] = {
             'z', 'd', 'l',
             'v', 'n', 'e'
@@ -79,6 +86,7 @@ int main() {
     printf("a的地址：   %p\n", a);
     printf("a的值：   %c\n", a[0][0]);
     printf("arrp的地址：   %p\n", parr);
+    printf("arrp的大小：   %d\n", sizeof(parr));
     printf("a的地址：   %p\n", a + 1);
 
     /**
@@ -278,6 +286,34 @@ int main() {
     testCPlus1();
 
     testCPlus2();
+
+    cout << "测试自定义数组" << endl;
+    ArrayList arrayList = new ArrayList;
+    arrayList.add(1);
+    arrayList.add(2);
+    arrayList.add(3);
+    arrayList.add(4);
+    arrayList.add(2, 8);
+    arrayList.toString();
+    cout << "测试自定义数组结束" << endl;
+
+    cout << "单例必需保护拷贝构造函数" << endl;
+
+    cout << "空struct大小" << sizeof(StructSize) << endl;
+    cout << "空Class大小" << sizeof(StructAndClass) << endl;
+
+    cout << "带参struct大小" << sizeof(StructSize1) << endl;
+    cout << "带参Class大小" << sizeof(StructAndClass1) << endl;
+
+    cout << "无参有virtual方法的Class大小" << sizeof(StructAndClass2) << endl;
+    cout << "------------------" << endl;
+    cout << "struct与class总结：" << endl;
+    cout << "当没有任何参数的时候，大小均为1，当有参数的时候，不管什么修饰符下，大小为最大参数的整数倍,类似于StructAndClass1" << endl;
+    cout << "并且class当拥有virtual修饰的虚函数或者纯虚函数是，大小8" << endl;
+    cout << "------------------" << endl;
+
+    FrendTest friendTest;
+    friendTest.test();
     return 0;
 }
 
@@ -289,9 +325,10 @@ int main() {
  * @return
  */
 
-//float temp;
+float temp;
 
 float &fn1(float &value) {
-    float temp = value * 3;
+//    float temp = value * 3;
+    temp = value * 3;
     return temp;
 }

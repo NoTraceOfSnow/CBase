@@ -24,6 +24,21 @@ public:
         cout << "parent  调用无参构造函数" << endl;
     };
 
+    /**
+     * 参数列表写法
+     * 即：
+     * 将ageValue赋值给age
+     * 将heightValue赋值给height
+     * @param age
+     * @param height
+     */
+    Parent(int ageValue, char *nameValue, int heightValue) :
+            age(ageValue),
+            name(changeName(nameValue)),
+            height(heightValue) {
+
+    }
+
     //单参构造
     Parent(int age) {
         cout << "parent  调用单参构造函数" << endl;
@@ -34,8 +49,7 @@ public:
     Parent(int age, char *name) {
         cout << "parent  调用单参构造函数" << endl;
         this->age = age;
-        this->name = (char *) malloc(strlen(name) + 1);
-        strcpy(this->name, name);
+        this->name = changeName(name);
     }
 
     /**
@@ -45,8 +59,7 @@ public:
      */
     explicit Parent(char *name) {
         cout << "parent  调用多参构造函数" << endl;
-        this->name = (char *) malloc(strlen(name) + 1);
-        strcpy(this->name, name);
+        this->name = changeName(name);
     }
 
     /**
@@ -80,6 +93,7 @@ public:
 //        this->height = parent.height;
         /**
          * 深拷贝：
+         * 当有对象在堆内存申请空间了，那就需要深拷贝。
          * 为了解决浅拷贝出现的问题.
          * 解决办法：
          * 重新对新对象开辟一个指向。释放的时候释放自己的，不在对原有对象的属性指向进行释放
@@ -88,8 +102,7 @@ public:
         cout << "parent  调用默认拷贝函数   深拷贝" << endl;
         this->age = parent.age;
         if (parent.name) {
-            this->name = (char *) malloc(strlen(parent.name));
-            strcpy(this->name, parent.name);
+            this->name = changeName(parent.name);
         }
         this->height = parent.height;
         cout << "parent  调用默认拷贝函数" << endl;
@@ -107,11 +120,23 @@ public:
         this->age = parent.age;
         parent.age = 100;
         if (parent.name) {
-            this->name = (char *) malloc(strlen(parent.name));
-            strcpy(this->name, parent.name);
+            this->name = changeName(parent.name);
         }
         this->height = parent.height;
         cout << "parent  调用重写拷贝函数" << endl;
+    }
+
+    /**
+     * 参数列表可以传递方法返回值
+     */
+    char *changeName(char *nameValue) {
+        /**
+         * 给name值申请堆内存。
+         * 测试浅拷贝与深拷贝
+         */
+        char *p = (char *) malloc(strlen(nameValue));
+        strcpy(p, nameValue);
+        return p;
     }
 
     //析构函数
@@ -217,6 +242,29 @@ void testCPlus2() {
      * 当重写了Parent(Parent &parent)，导致数据被修改
      */
     cout << "当重写了Parent(Parent &parent)，导致数据被修改 parent age：  " << p5.age << endl;
+
+    /**
+     * malloc和new却别：
+     * 所有new出来的对象，都是返回该类型的指针。
+     * malloc返回的void *，需要手动强转
+     * malloc不会调用构造方法，new会调用构造方法
+     * new是运算符，malloc是方法
+     * 都需要手动去释放内存
+     * new出来的对象需要用delete进行释放，malloc出来的对象需要用free进行释放
+     * new不会失败，malloc有可能会出现失败的情况
+     * new对象用 void * 取接受，释放不了对象
+     * malloc缺点：
+     * 1. 程序员必须确定对象的长度
+     * 2. malloc 返回一个 （void *） 指针 ，c++不允许将 （void*) 赋值给其它指针，必须强转
+     * 3. malloc可能申请内存失败，所以必须判断返回值来保存内存分配成功
+     * 4. 用户在使用对象之前必须记住对他初始化，构造函数不能显示调用初始化（构造函数是由编
+     * 译器调用的），用户有可能忘记调用初始化函数
+     */
+    cout << "演示new数组释放" << endl;
+    Parent *pArray = new Parent[3];
+    delete[]pArray;
+    pArray=NULL;
+    cout << "释放new数组" << endl;
 }
 
 
