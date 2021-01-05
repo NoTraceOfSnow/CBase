@@ -14,6 +14,9 @@ using namespace std;
  * 友元类不能被继承，即友元关系不能被继承
  */
 class AParent {
+    /**
+     * 指定友元类
+     */
     friend class FrendTest;
 
 public:
