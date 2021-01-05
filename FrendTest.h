@@ -13,7 +13,20 @@ using namespace std;
  * 测试友元类
  * 友元类不能被继承，即友元关系不能被继承
  */
-#include "FirendParent.h"
+class AParent {
+    friend class FrendTest;
+
+public:
+    int age = 10;
+
+    AParent() {
+
+    }
+
+private:
+    char *name = "honhon";
+
+};
 
 class FrendTest {
 
@@ -24,7 +37,7 @@ public:
     }
 
 private:
-    FirendParent frendParent;
+    AParent frendParent;
 };
 
 #endif //CBASE_FRENDTEST_H

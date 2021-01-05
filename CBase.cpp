@@ -86,7 +86,7 @@ int main() {
     printf("a的地址：   %p\n", a);
     printf("a的值：   %c\n", a[0][0]);
     printf("arrp的地址：   %p\n", parr);
-    printf("arrp的大小：   %d\n", sizeof(parr));
+    printf("arrp的大小：   %lu\n", sizeof(parr));
     printf("a的地址：   %p\n", a + 1);
 
     /**
